@@ -7,7 +7,6 @@ pom.xml.next
 release.properties
 
 ## Java
-
 *.class
 *.war
 *.ear

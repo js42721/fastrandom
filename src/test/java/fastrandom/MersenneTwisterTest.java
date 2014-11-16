@@ -18,9 +18,10 @@ public class MersenneTwisterTest {
         int[] seed = { 0x123, 0x234, 0x345, 0x456 };
         MersenneTwister mt = new MersenneTwister(seed);
         
-        for (int i = 0; i < 1000; ++i) {
-            long next = mt.nextInt() & 0xffffffffL;
-            assertEquals(scan.nextLong(), next);
+        while (scan.hasNextLong()) {
+            long expected = scan.nextLong();
+            long actual = mt.nextInt() & 0xffffffffL;
+            assertEquals(expected, actual);
         }
         
         scan.close();
