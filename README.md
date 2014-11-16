@@ -6,7 +6,7 @@ non-cryptographic pseudorandom number generators:
 
 * <b>LFib4</b> - a lagged Fibonacci generator by Marsaglia.
 * <b>MersenneTwister</b> - a 623-dimensionally equidistributed generator with a 
-ginormous period of 2<sup>19937</sup> by Matsumoto and Nishimura.
+ginormous period of 2<sup>19937</sup> - 1 by Matsumoto and Nishimura.
 * <b>SuperDuper64</b> - a combination of a linear congruential generator and a
 linear feedback shift register by Marsaglia.
 * <b>Taus88</b> - a maximally equidistributed linear feedback shift register by

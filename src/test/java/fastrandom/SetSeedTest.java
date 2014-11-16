@@ -4,7 +4,6 @@ import static org.junit.Assert.*;
 
 import java.util.Arrays;
 
-import org.junit.Before;
 import org.junit.Test;
 import org.junit.runner.RunWith;
 import org.junit.runners.Parameterized;
@@ -24,19 +23,14 @@ public class SetSeedTest {
     }
     
     private Class<? extends FastRandom> c;
-    private FastRandom rnd;
     
     public SetSeedTest(Class<? extends FastRandom> c) {
         this.c = c;
     }
-
-    @Before
-    public void init() throws Exception {
-        rnd = c.newInstance();
-    }
     
     @Test
-    public void testSetSeed() {
+    public void testSetSeed() throws Exception {
+        FastRandom rnd = c.newInstance();
         int seed = 123456789;
         rnd.setSeed(seed);
         int r1 = rnd.nextInt();
