@@ -43,9 +43,13 @@ public class Taus88 extends AbstractFastRandom implements FastRandom, Serializab
 
     @Override
     protected int next(int bits) {
-        s1 = ((s1 &  -2) << 12) ^ (((s1 << 13) ^  s1) >>> 19);
-        s2 = ((s2 &  -8) <<  4) ^ (((s2 <<  2) ^  s2) >>> 25);
-        s3 = ((s3 & -16) << 17) ^ (((s3 <<  3) ^  s3) >>> 11);
-        return (s1 ^ s2 ^ s3) >>> (32 - bits);
+        int b;
+        b  = ((s1 << 13) ^  s1) >>> 19;
+        s1 = ((s1 &  -2) << 12) ^ b;
+        b  = ((s2 <<  2) ^  s2) >>> 25;
+        s2 = ((s2 &  -8) <<  4) ^ b;
+        b  = ((s3 <<  3) ^  s3) >>> 11;
+        s3 = ((s3 & -16) << 17) ^ b;
+        return (s1 ^ s2 ^  s3) >>> (32 - bits);
     }
 }

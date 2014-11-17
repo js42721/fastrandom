@@ -21,13 +21,13 @@ by L'Ecuyer and Simard to view test results for some of them.
 
 The following table provides some basic information about the generators.
 
-| Name            | Period       | Size\* (bits) | Speed\*\* (relative to fastest) | 
-| :-------------- | :----------- | :------------ | :-------------------------- |
-| LFib4           | ~2<sup>287</sup>      | 8192          | 100%               |
-| MersenneTwister | 2<sup>19937</sup> - 1 | 19968         | 38%                |
-| SuperDuper64    | ~2<sup>128</sup>      | 128           | 51%                |
-| Taus88          | ~2<sup>88</sup>       | 96            | 75%                |
-| WELL512         | 2<sup>512</sup> - 1   | 512           | 51%                |
+| Name            | Period                | Size\* (bits) | Speed\*\* (relative to fastest) | 
+| :-------------- | :-------------------- | :------------ | :------------------------------ |
+| LFib4           | ~2<sup>287</sup>      | 8192          | 100%                            |
+| MersenneTwister | 2<sup>19937</sup> - 1 | 19968         | 38%                             |
+| SuperDuper64    | ~2<sup>128</sup>      | 128           | 51%                             |
+| Taus88          | ~2<sup>88</sup>       | 96            | 75%                             |
+| WELL512         | 2<sup>512</sup> - 1   | 512           | 51%                             |
 
 \* Java object overhead and auxiliary variables are not taken into consideration.
 
