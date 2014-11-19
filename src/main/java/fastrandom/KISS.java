@@ -27,6 +27,7 @@ public class KISS extends AbstractFastRandom implements FastRandom, Serializable
 
     @Override
     public void setSeed(long seed) {
+        clearGaussian();
         /*
          * x: any 32-bit integer
          * y: nonzero 32-bit integer
@@ -47,7 +48,6 @@ public class KISS extends AbstractFastRandom implements FastRandom, Serializable
             ++w;
         }
         c = y >>> 31;
-        clearGaussian();
     }
     
     @Override

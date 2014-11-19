@@ -6,7 +6,9 @@ import java.io.File;
 import java.net.URL;
 import java.util.Scanner;
 
+import org.junit.Rule;
 import org.junit.Test;
+import org.junit.rules.ExpectedException;
 
 public class MersenneTwisterTest {
     @Test
@@ -25,5 +27,40 @@ public class MersenneTwisterTest {
         }
         
         scan.close();
+    }
+    
+    @Test
+    public void testSeedByArray() {
+        int[] seed = { 0, 1, 2 };
+        
+        MersenneTwister mt = new MersenneTwister(seed);
+        double r1 = mt.nextGaussian();
+        
+        mt.setSeed(seed);
+        double r2 = mt.nextGaussian();
+        
+        assertEquals(r1, r2, 0.0);
+    }
+    
+    @Test
+    public void testSeedByArrayEmpty() {
+        int[] seed = {};
+        
+        MersenneTwister mt = new MersenneTwister(seed);
+        double r1 = mt.nextGaussian();
+        
+        mt.setSeed(seed);
+        double r2 = mt.nextGaussian();
+        
+        assertEquals(r1, r2, 0.0);
+    }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+    
+    @Test
+    public void testSeedByArrayNull() {
+        thrown.expect(NullPointerException.class);
+        new MersenneTwister(null);
     }
 }

@@ -22,10 +22,10 @@ time column shows the time required to generate 10<sup>9</sup> numbers on a
 
 | Name             | Period                | State size (words) | Time (s) | 
 | :--------------- | :-------------------- | :----------------- | :------- |
-| KISS             | ~2<sup>123</sup>      | 5                  | 4.25     |
-| Mersenne Twister | 2<sup>19937</sup> - 1 | 624                | 10.32    |
-| taus88           | ~2<sup>88</sup>       | 3                  | 5.27     |
-| WELL512          | 2<sup>512</sup> - 1   | 16                 | 7.64     |
+| KISS             | ~2<sup>123</sup>      | 5                  | 4.3      |
+| Mersenne Twister | 2<sup>19937</sup> - 1 | 624                | 10.3     |
+| taus88           | ~2<sup>88</sup>       | 3                  | 5.3      |
+| WELL512          | 2<sup>512</sup> - 1   | 16                 | 7.6      |
 
 <br>
 These generators are implemented in a non-thread-safe manner for the sake of

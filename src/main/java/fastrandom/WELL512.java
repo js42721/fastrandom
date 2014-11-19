@@ -27,12 +27,17 @@ public class WELL512 extends AbstractFastRandom implements FastRandom, Serializa
     
     @Override
     public void setSeed(long seed) {
-        /* At least one of the values in the state array must be nonzero. */
-        SeedGenerator.expand(seed, state);
-        index = 0;
         clearGaussian();
+        index = 0;
+        /* At least one element in the state array must be nonzero. */
+        state[0] = (int)(seed >> 32);
+        state[1] = (int)seed;
+        for (int i = 2; i < state.length; ++i) {
+            seed = SeedGenerator.LCG(seed);
+            state[i] = (int)(seed >> 32);
+        }
     }
-
+    
     @Override
     protected int next(int bits) {
         int z0 = state[index];

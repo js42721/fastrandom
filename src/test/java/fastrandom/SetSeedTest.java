@@ -29,12 +29,14 @@ public class SetSeedTest {
     
     @Test
     public void testSetSeed() throws Exception {
-        FastRandom rnd = c.newInstance();
-        int seed = 123456789;
+        long seed = 9876543210L;
+        
+        FastRandom rnd = c.getConstructor(Long.TYPE).newInstance(seed);
+        double r1 = rnd.nextGaussian();
+        
         rnd.setSeed(seed);
-        int r1 = rnd.nextInt();
-        rnd.setSeed(seed);
-        int r2 = rnd.nextInt();
-        assertEquals(r1, r2);
+        double r2 = rnd.nextGaussian();
+        
+        assertEquals(r1, r2, 0.0);
     }
 }

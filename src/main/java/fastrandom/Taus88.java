@@ -24,6 +24,7 @@ public class Taus88 extends AbstractFastRandom implements FastRandom, Serializab
 
     @Override
     public void setSeed(long seed) {
+        clearGaussian();
         s1 = (int)seed;
         if ((s1 & 0xffffffffL) < 2L) {
             s1 = ~s1; // Upper 31 bits must be nonzero.
@@ -36,7 +37,6 @@ public class Taus88 extends AbstractFastRandom implements FastRandom, Serializab
         if ((s3 & 0xffffffffL) < 16L) {
             s3 = ~s3; // Upper 28 bits must be nonzero.
         }
-        clearGaussian();
     }
 
     @Override
