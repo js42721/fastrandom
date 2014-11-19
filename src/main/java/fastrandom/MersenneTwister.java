@@ -74,11 +74,7 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
 
     @Override
     public void setSeed(long seed) {
-        mt[0] = (int)seed;
-        for (mti = 1; mti < N; ++mti) {
-            mt[mti] = 1812433253 * (mt[mti - 1] ^ (mt[mti - 1] >>> 30)) + mti;
-        }
-        clearGaussian();
+        setSeed(new int[]{ (int)(seed >> 32), (int)seed });
     }
 
     /** 
@@ -90,7 +86,10 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
         if (seed == null) {
             throw new NullPointerException();
         }
-        setSeed(19650218);
+        mt[0] = 19650218;
+        for (mti = 1; mti < N; ++mti) {
+            mt[mti] = 1812433253 * (mt[mti - 1] ^ (mt[mti - 1] >>> 30)) + mti;
+        }
         if (seed.length == 0) {
             return;
         }
@@ -117,6 +116,7 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
             }
         }
         mt[0] = 0x80000000;
+        clearGaussian();
     }
     
     @Override

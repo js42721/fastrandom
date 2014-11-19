@@ -13,10 +13,9 @@ import org.junit.runners.Parameterized.Parameters;
 public class SetSeedTest {
     @Parameters
     public static Iterable<Object[]> getAll() {
-        return Arrays.asList(new Object[][] { 
-                { LFib4.class },
+        return Arrays.asList(new Object[][] {
+                { KISS.class },
                 { MersenneTwister.class },
-                { SuperDuper64.class },
                 { Taus88.class },
                 { WELL512.class }
         });

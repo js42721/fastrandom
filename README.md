@@ -4,40 +4,35 @@ FastRandom
 A fast, high-quality alternative to java.util.Random. It includes the following
 non-cryptographic pseudorandom number generators:
 
-* <b>LFib4</b> - a lagged Fibonacci generator by Marsaglia.
-* <b>MersenneTwister</b> - a 623-dimensionally equidistributed generator with a 
+* <b>KISS</b> - an effective combination of several simple generators by 
+Marsaglia.
+* <b>Mersenne Twister</b> - a 623-dimensionally equidistributed generator with a 
 ginormous period of 2<sup>19937</sup> - 1 by Matsumoto and Nishimura.
-* <b>SuperDuper64</b> - a combination of a linear congruential generator and a
-linear feedback shift register by Marsaglia.
-* <b>Taus88</b> - a maximally equidistributed linear feedback shift register by
+* <b>taus88</b> - a maximally equidistributed linear feedback shift register by
 L'Ecuyer.
 * <b>WELL512</b> - the smallest of the WELL (Well Equidistributed Long-period
 Linear) series by L'Ecuyer, Matsumoto, and Panneton.
 
-All of these generators perform well on statistical tests of randomness. See 
-["TestU01: A C Library for Empirical Testing of Random Number Generators"](
-http://www.iro.umontreal.ca/~lecuyer/myftp/papers/testu01.pdf)
-by L'Ecuyer and Simard to view test results for some of them.
+All of these generators perform well on statistical tests of randomness and
+should work well for simulations and most other non-cryptographic uses.
 
-The following table provides some basic information about the generators.
+The table below provides some basic information about the generators. The
+time column shows the time required to generate 10<sup>9</sup> numbers on a
+2 GHz Intel Core 2 Duo.
 
-| Name            | Period                | Size\* (bits) | Speed\*\* (relative to fastest) | 
-| :-------------- | :-------------------- | :------------ | :------------------------------ |
-| LFib4           | ~2<sup>287</sup>      | 8192          | 100%                            |
-| MersenneTwister | 2<sup>19937</sup> - 1 | 19968         | 38%                             |
-| SuperDuper64    | ~2<sup>128</sup>      | 128           | 51%                             |
-| Taus88          | ~2<sup>88</sup>       | 96            | 75%                             |
-| WELL512         | 2<sup>512</sup> - 1   | 512           | 51%                             |
+| Name             | Period                | State size (words) | Time (s) | 
+| :--------------- | :-------------------- | :----------------- | :------- |
+| KISS             | ~2<sup>123</sup>      | 5                  | 4.25     |
+| Mersenne Twister | 2<sup>19937</sup> - 1 | 624                | 10.32    |
+| taus88           | ~2<sup>88</sup>       | 3                  | 5.27     |
+| WELL512          | 2<sup>512</sup> - 1   | 16                 | 7.64     |
 
-\* Java object overhead and auxiliary variables are not taken into consideration.
-
-\*\* Measured by generating 32-bit integers.
-
-
+<br>
 These generators are implemented in a non-thread-safe manner for the sake of
 performance. The recommended way to use them in a multithreaded application is
 to have each thread access its own isolated generator instance, thereby avoiding
 the need for synchronization or atomic updates (the stuff that makes Random
-slow). Java 7's ThreadLocalRandom follows this route and is very fast as a
-result, though it is somewhat lacking as far as randomness is concerned.
+slow). ThreadLocalRandom from Java 7 follows this route and is very fast as a
+result, though it is somewhat lacking as far as randomness is concerned since
+it uses the same algorithm as Random.
 
