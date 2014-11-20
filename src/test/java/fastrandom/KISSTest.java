@@ -8,7 +8,7 @@ import org.junit.Test;
 
 public class KISSTest {
     @Test
-    public void test() throws Exception {
+    public void testOutput() throws Exception {
         int[] expected = { 199275006, 86473693, -2085369775, 1298124039 };
         
         KISS kiss = new KISS();
