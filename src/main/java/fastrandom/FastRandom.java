@@ -1,6 +1,6 @@
 package fastrandom;
 
-/** Random number generator. */
+/** Like {@link java.util.Random} but faster (yes, that is part of the contract). */
 public interface FastRandom {
     /** Seeds this random number generator. */
     void setSeed(long seed);
