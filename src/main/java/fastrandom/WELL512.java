@@ -32,9 +32,10 @@ public class WELL512 extends AbstractFastRandom implements FastRandom, Serializa
         /* At least one element in the state array must be nonzero. */
         state[0] = (int)(seed >> 32);
         state[1] = (int)seed;
+        long next = seed;
         for (int i = 2; i < state.length; ++i) {
-            seed = SeedGenerator.LCG(seed);
-            state[i] = (int)(seed >> 32);
+            next = SeedGenerator.LCG(next);
+            state[i] = (int)(next >> 32);
         }
     }
     
