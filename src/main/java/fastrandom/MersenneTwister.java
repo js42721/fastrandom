@@ -1,22 +1,22 @@
 /*
  * Copyright (C) 1997 - 2002, Makoto Matsumoto and Takuji Nishimura,
  * All rights reserved.
- * 
+ *
  * Redistribution and use in source and binary forms, with or without
  * modification, are permitted provided that the following conditions
  * are met:
- * 
+ *
  *   1. Redistributions of source code must retain the above copyright
  *      notice, this list of conditions and the following disclaimer.
- *      
+ *
  *   2. Redistributions in binary form must reproduce the above copyright
  *      notice, this list of conditions and the following disclaimer in the
  *      documentation and/or other materials provided with the distribution.
- *      
- *   3. The names of its contributors may not be used to endorse or promote 
- *      products derived from this software without specific prior written 
+ *
+ *   3. The names of its contributors may not be used to endorse or promote
+ *      products derived from this software without specific prior written
  *      permission.
- *   
+ *
  * THIS SOFTWARE IS PROVIDED BY THE COPYRIGHT HOLDERS AND CONTRIBUTORS
  * "AS IS" AND ANY EXPRESS OR IMPLIED WARRANTIES, INCLUDING, BUT NOT
  * LIMITED TO, THE IMPLIED WARRANTIES OF MERCHANTABILITY AND FITNESS FOR
@@ -34,20 +34,20 @@ package fastrandom;
 
 import java.io.Serializable;
 
-/** 
+/**
  * Implements MT19937, a generator with a period of 2<sup>19937</sup> - 1. For
  * more information, see "Mersenne Twister: A 623-dimensionally equidistributed
  * uniform pseudorandom generator" by Matsumoto and Nishimura.
  */
 public class MersenneTwister extends AbstractFastRandom implements FastRandom, Serializable {
     private static final long serialVersionUID = -7746671748906043888L;
-    
+
     private static final int N          = 624;
     private static final int M          = 397;
     private static final int UPPER_MASK = 0x80000000;
     private static final int LOWER_MASK = 0x7fffffff;
     private static final int[] MAG01    = { 0, 0x9908b0df };
-    
+
     private final int[] mt;
     private int mti;
 
@@ -61,10 +61,10 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
         mt = new int[N];
         setSeed(seed);
     }
-    
+
     /**
      * Constructs a random number generator with an {@code int} array seed.
-     * 
+     *
      * @throws NullPointerException if seed is null
      */
     public MersenneTwister(int[] seed) {
@@ -77,9 +77,9 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
         setSeed(new int[]{ (int)(seed >> 32), (int)seed });
     }
 
-    /** 
+    /**
      * Seeds this generator with an {@code int} array seed.
-     * 
+     *
      * @throws NullPointerException if seed is null 
      */
     public void setSeed(int[] seed) {
@@ -99,11 +99,11 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
         for (int k = Math.max(seed.length, N); k > 0; --k) {
             mt[i] = (mt[i] ^ (mt[i - 1] ^ (mt[i - 1] >>> 30)) * 1664525) + seed[j] + j;
             ++i;
-            ++j;
             if (i >= N) {
                 mt[0] = mt[N - 1];
                 i = 1;
             }
+            ++j;
             if (j >= seed.length) {
                 j = 0;
             }
@@ -118,7 +118,7 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
         }
         mt[0] = 0x80000000;
     }
-    
+
     @Override
     protected int next(int bits) {
         int y;

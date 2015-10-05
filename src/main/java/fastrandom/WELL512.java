@@ -2,7 +2,7 @@ package fastrandom;
 
 import java.io.Serializable;
 
-/** 
+/**
  * The smallest of the WELL (Well Equidistributed Long-period Linear) series,
  * this generator has a state size of 512 bits and a period of 2<sup>512</sup> - 1.
  * See "Improved Long-Period Generators Based on Linear Recurrences Modulo 2"
@@ -10,10 +10,10 @@ import java.io.Serializable;
  */
 public class WELL512 extends AbstractFastRandom implements FastRandom, Serializable {
     private static final long serialVersionUID = -178962713019714243L;
-    
+
     private final int[] state;
     private int index;
-    
+
     /** Constructs a random number generator. */
     public WELL512() {
         this(SeedGenerator.getSeed());
@@ -24,7 +24,7 @@ public class WELL512 extends AbstractFastRandom implements FastRandom, Serializa
         state = new int[16];
         setSeed(seed);
     }
-    
+
     @Override
     public void setSeed(long seed) {
         clearGaussian();
@@ -38,7 +38,7 @@ public class WELL512 extends AbstractFastRandom implements FastRandom, Serializa
             state[i] = (int)(next >> 32);
         }
     }
-    
+
     @Override
     protected int next(int bits) {
         int z0 = state[index];

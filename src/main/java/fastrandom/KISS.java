@@ -2,7 +2,7 @@ package fastrandom;
 
 import java.io.Serializable;
 
-/** 
+/**
  * KISS (Keep It Simple, Stupid) is a combination of several simple generators.
  * This class implements the 2007 version which uses no multiplication and has a
  * period of approximately 2<sup>123</sup>. See the following post by Marsaglia
@@ -12,7 +12,7 @@ import java.io.Serializable;
  */
 public class KISS extends AbstractFastRandom implements FastRandom, Serializable {
     private static final long serialVersionUID = -8639916730566814187L;
-    
+
     private int x, y, z, w, c;
 
     /** Constructs a random number generator. */
@@ -49,7 +49,7 @@ public class KISS extends AbstractFastRandom implements FastRandom, Serializable
         }
         c = y >>> 31;
     }
-    
+
     @Override
     protected int next(int bits) {
         x += 545925293;
