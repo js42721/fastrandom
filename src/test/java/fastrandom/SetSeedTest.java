@@ -20,23 +20,23 @@ public class SetSeedTest {
                 { WELL512.class }
         });
     }
-    
+
     private Class<? extends FastRandom> c;
-    
+
     public SetSeedTest(Class<? extends FastRandom> c) {
         this.c = c;
     }
-    
+
     @Test
     public void testSetSeed() throws Exception {
         long seed = 9876543210L;
-        
+
         FastRandom rnd = c.getConstructor(Long.TYPE).newInstance(seed);
         double r1 = rnd.nextGaussian();
-        
+
         rnd.setSeed(seed);
         double r2 = rnd.nextGaussian();
-        
+
         assertEquals(r1, r2, 0.0);
     }
 }

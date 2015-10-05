@@ -30,30 +30,30 @@ public class WELL512 extends AbstractFastRandom implements FastRandom, Serializa
         clearGaussian();
         index = 0;
         /* At least one element in the state array must be nonzero. */
-        state[0] = (int)(seed >> 32);
-        state[1] = (int)seed;
+        state[0] = (int) (seed >> 32);
+        state[1] = (int) seed;
         long next = seed;
         for (int i = 2; i < state.length; ++i) {
             next = SeedGenerator.LCG(next);
-            state[i] = (int)(next >> 32);
+            state[i] = (int) (next >> 32);
         }
     }
 
     @Override
     protected int next(int bits) {
-        int z0 = state[index];
-        int z1 = state[(index + 13) & 0xf];
-        int z2 = (z0 ^ (z0 << 16)) ^ (z1 ^ (z1 << 15));
-        z0 = state[(index + 9) & 0xf];
-        z1 = z0 ^ (z0 >>> 11);
-        z0 = state[index] = z1 ^ z2;
+        int z1 = state[index];
+        int z2 = state[(index + 13) & 0xf];
+        int z3 = (z1 ^ (z1 << 16)) ^ (z2 ^ (z2 << 15));
+        z1 = state[(index + 9) & 0xf];
+        z2 = z1 ^ (z1 >>> 11);
+        z1 = state[index] = z2 ^ z3;
         index = (index + 15) & 0xf;
-        int z3 = state[index];
-        int z4 = (z3 ^ (z3 << 2))
-               ^ (z2 ^ (z2 << 18))
-               ^ (z1 << 28) 
-               ^ (z0 ^ ((z0 << 5) & 0xda442d24));
-        state[index] = z4;
-        return z4 >>> (32 - bits);
+        int z4 = state[index];
+        int z5 = (z4 ^ (z4 << 2))
+               ^ (z3 ^ (z3 << 18))
+               ^ (z2 << 28) 
+               ^ (z1 ^ ((z1 << 5) & 0xda442d24));
+        state[index] = z5;
+        return z5 >>> (32 - bits);
     }
 }

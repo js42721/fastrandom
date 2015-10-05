@@ -26,17 +26,17 @@ public class Taus88 extends AbstractFastRandom implements FastRandom, Serializab
     public void setSeed(long seed) {
         clearGaussian();
         /* Upper 31 bits must not be all zero. */
-        s1 = (int)seed;
+        s1 = (int) seed;
         if ((s1 & 0xffffffffL) < 2L) {
             s1 += 2;
         }
         /* Upper 29 bits must not be all zero. */
-        s2 = (int)(seed >> 32);
+        s2 = (int) (seed >> 32);
         if ((s2 & 0xffffffffL) < 8L) {
             s2 += 8;
         }
         /* Upper 28 bits must not be all zero. */
-        s3 = (int)(SeedGenerator.LCG(seed) >> 32);
+        s3 = (int) (SeedGenerator.LCG(seed) >> 32);
         if ((s3 & 0xffffffffL) < 16L) {
             s3 += 16;
         }

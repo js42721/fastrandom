@@ -74,7 +74,7 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
 
     @Override
     public void setSeed(long seed) {
-        setSeed(new int[]{ (int)(seed >> 32), (int)seed });
+        setSeed(new int[] { (int) (seed >> 32), (int) seed });
     }
 
     /**

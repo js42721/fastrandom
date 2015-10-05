@@ -13,18 +13,18 @@ public class WELL512Test {
                 68836822, 1269219612, -77824293, 1060662926, -480941754,
                 -1907295641, -1075035823, 292129001, -146556871, 1240875097,
                 -120842159, 551407414 };
-        
+
         WELL512 w = new WELL512();
-        
+
         Field field = WELL512.class.getDeclaredField("state");
         field.setAccessible(true);
-        int[] state = (int[])field.get(w);
+        int[] state = (int[]) field.get(w);
         System.arraycopy(testState, 0, state, 0, testState.length);
-        
+
         for (int i = 0; i < 10; ++i) {
             w.nextInt();
         }
-        
+
         assertEquals(108509171, w.nextInt());
     }
 }

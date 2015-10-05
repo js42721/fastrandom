@@ -34,8 +34,8 @@ public class KISS extends AbstractFastRandom implements FastRandom, Serializable
          * z, w: 31-bit integers not multiples of 7559
          * c: 0 or 1
          */
-        x = (int)(seed >> 32);
-        y = (int)seed;
+        x = (int) (seed >> 32);
+        y = (int) seed;
         if (y == 0) {
             y = -1;
         }

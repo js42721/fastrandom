@@ -14,16 +14,16 @@ public abstract class AbstractFastRandom implements FastRandom {
         int end = bytes.length - 3;
         while (i < end) {
             int rnd = next(32);
-            bytes[i] = (byte)rnd;
-            bytes[i + 1] = (byte)(rnd >> 8);
-            bytes[i + 2] = (byte)(rnd >> 16);
-            bytes[i + 3] = (byte)(rnd >> 24);
+            bytes[i] = (byte) rnd;
+            bytes[i + 1] = (byte) (rnd >> 8);
+            bytes[i + 2] = (byte) (rnd >> 16);
+            bytes[i + 3] = (byte) (rnd >> 24);
             i += 4;
         }
         if (i < bytes.length) {
             int rnd = next(32);
             do {
-                bytes[i++] = (byte)rnd;
+                bytes[i++] = (byte) rnd;
                 rnd >>= 8;
             } while (i < bytes.length);
         }
@@ -43,9 +43,9 @@ public abstract class AbstractFastRandom implements FastRandom {
             /*
              * Returns the high bits rather than the low bits. This is helpful
              * for generators whose output exhibits less entropy in the lower
-             * bits (namely linear congruential generators). 
+             * bits (namely linear congruential generators).
              */
-            return (int)((n * (long)next(31)) >> 31);
+            return (int) ((n * (long) next(31)) >> 31);
         }
         /*
          * Performs rejection sampling to achieve a uniform distribution if n
@@ -61,7 +61,7 @@ public abstract class AbstractFastRandom implements FastRandom {
 
     @Override
     public long nextLong() {
-        return ((long)next(32) << 32) + next(32);
+        return ((long) next(32) << 32) + next(32);
     }
 
     @Override
@@ -71,12 +71,12 @@ public abstract class AbstractFastRandom implements FastRandom {
 
     @Override
     public float nextFloat() {
-        return next(24) / (float)(1 << 24);
+        return next(24) / (float) (1 << 24);
     }
 
     @Override
     public double nextDouble() {
-        return (((long)next(26) << 27) + next(27)) / (double)(1L << 53);
+        return (((long) next(26) << 27) + next(27)) / (double) (1L << 53);
     }
 
     @Override

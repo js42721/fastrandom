@@ -10,9 +10,9 @@ public class KISSTest {
     @Test
     public void testOutput() throws Exception {
         int[] expected = { 199275006, 86473693, -2085369775, 1298124039 };
-        
+
         KISS kiss = new KISS();
-        
+
         Field f1 = KISS.class.getDeclaredField("x");
         f1.setAccessible(true);
         f1.setInt(kiss, 123456789);
@@ -28,15 +28,15 @@ public class KISSTest {
         Field f4 = KISS.class.getDeclaredField("w");
         f4.setAccessible(true);
         f4.setInt(kiss, 14921776);
-        
+
         Field f5 = KISS.class.getDeclaredField("c");
         f5.setAccessible(true);
         f5.setInt(kiss, 0);
-        
+
         for (int i = 0; i < 99996; ++i) {
             kiss.nextInt();
         }
-        
+
         for (int i = 0; i < 4; ++i) {
             assertEquals(expected[i], kiss.nextInt());
         }
