@@ -51,7 +51,7 @@ public class WELL512 extends AbstractFastRandom implements FastRandom, Serializa
         int z4 = state[index];
         int z5 = (z4 ^ (z4 << 2))
                ^ (z3 ^ (z3 << 18))
-               ^ (z2 << 28) 
+               ^ (z2 << 28)
                ^ (z1 ^ ((z1 << 5) & 0xda442d24));
         state[index] = z5;
         return z5 >>> (32 - bits);
