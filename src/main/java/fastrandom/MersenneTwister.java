@@ -83,9 +83,6 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
      * @throws NullPointerException if seed is null 
      */
     public void setSeed(int[] seed) {
-        if (seed == null) {
-            throw new NullPointerException();
-        }
         clearGaussian();
         mt[0] = 19650218;
         for (mti = 1; mti < N; ++mti) {
@@ -98,20 +95,17 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
         int j = 0;
         for (int k = Math.max(seed.length, N); k > 0; --k) {
             mt[i] = (mt[i] ^ (mt[i - 1] ^ (mt[i - 1] >>> 30)) * 1664525) + seed[j] + j;
-            ++i;
-            if (i >= N) {
+            if (++i >= N) {
                 mt[0] = mt[N - 1];
                 i = 1;
             }
-            ++j;
-            if (j >= seed.length) {
+            if (++j >= seed.length) {
                 j = 0;
             }
         }
         for (int k = N - 1; k > 0; --k) {
             mt[i] = (mt[i] ^ (mt[i - 1] ^ (mt[i - 1] >>> 30)) * 1566083941) - i;
-            ++i;
-            if (i >= N) {
+            if (++i >= N) {
                 mt[0] = mt[N - 1];
                 i = 1;
             }

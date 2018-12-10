@@ -43,7 +43,7 @@ public abstract class AbstractFastRandom implements FastRandom {
             /*
              * Returns the high bits rather than the low bits. This is helpful
              * for generators whose output exhibits less entropy in the lower
-             * bits (namely linear congruential generators).
+             * bits.
              */
             return (int) ((n * (long) next(31)) >> 31);
         }
@@ -51,12 +51,12 @@ public abstract class AbstractFastRandom implements FastRandom {
          * Performs rejection sampling to achieve a uniform distribution if n
          * does not divide the range of nonnegative int values.
          */
-        int rnd, ret;
+        int rnd, res;
         do {
             rnd = next(31);
-            ret = rnd % n;
-        } while (rnd - ret + (n - 1) < 0);
-        return ret;
+            res = rnd % n;
+        } while (rnd - res + (n - 1) < 0);
+        return res;
     }
 
     @Override

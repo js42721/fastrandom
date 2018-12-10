@@ -31,8 +31,5 @@ time column shows the time required to generate 10<sup>9</sup> numbers on a
 These generators are implemented in a non-thread-safe manner for the sake of
 performance. The recommended way to use them in a multithreaded application is
 to have each thread access its own isolated generator instance, thereby avoiding
-the need for synchronization or atomic updates (the stuff that makes Random
-slow). ThreadLocalRandom from Java 7 follows this route and is very fast as a
-result, though it is somewhat lacking as far as randomness is concerned since
-it uses the same algorithm as Random.
+the need for synchronization or atomic updates.
 
