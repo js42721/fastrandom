@@ -91,21 +91,22 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
         if (seed.length == 0) {
             return;
         }
-        int i = 1;
-        int j = 0;
+        int i = 1, j = 0;
         for (int k = Math.max(seed.length, N); k > 0; --k) {
             mt[i] = (mt[i] ^ (mt[i - 1] ^ (mt[i - 1] >>> 30)) * 1664525) + seed[j] + j;
-            if (++i >= N) {
+            ++i; ++j;
+            if (i >= N) {
                 mt[0] = mt[N - 1];
                 i = 1;
             }
-            if (++j >= seed.length) {
+            if (j >= seed.length) {
                 j = 0;
             }
         }
         for (int k = N - 1; k > 0; --k) {
             mt[i] = (mt[i] ^ (mt[i - 1] ^ (mt[i - 1] >>> 30)) * 1566083941) - i;
-            if (++i >= N) {
+            ++i;
+            if (i >= N) {
                 mt[0] = mt[N - 1];
                 i = 1;
             }
