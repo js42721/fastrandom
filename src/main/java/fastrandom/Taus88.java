@@ -14,7 +14,7 @@ public class Taus88 extends AbstractFastRandom implements FastRandom, Serializab
 
     /** Constructs a random number generator. */
     public Taus88() {
-        this(SeedGenerator.getSeed());
+        this(Utils.getSeed());
     }
 
     /** Constructs a random number generator with the specified seed. */
@@ -36,7 +36,7 @@ public class Taus88 extends AbstractFastRandom implements FastRandom, Serializab
             s2 += 8;
         }
         /* Upper 28 bits must not be all zero. */
-        s3 = (int) (SeedGenerator.LCG(seed) >> 32);
+        s3 = (int) (Utils.LCG(seed) >> 32);
         if ((s3 & 0xffffffffL) < 16) {
             s3 += 16;
         }

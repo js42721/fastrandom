@@ -54,4 +54,13 @@ public class MersenneTwisterTest {
 
         assertEquals(r1, r2, 0.0);
     }
+
+    @Rule
+    public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void testSeedByArrayNull() {
+        thrown.expect(NullPointerException.class);
+        new MersenneTwister(null);
+    }
 }

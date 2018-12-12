@@ -17,7 +17,7 @@ public class KISS extends AbstractFastRandom implements FastRandom, Serializable
 
     /** Constructs a random number generator. */
     public KISS() {
-        this(SeedGenerator.getSeed());
+        this(Utils.getSeed());
     }
 
     /** Constructs a random number generator with the specified seed. */

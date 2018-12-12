@@ -53,7 +53,7 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
 
     /** Constructs a random number generator. */
     public MersenneTwister() {
-        this(SeedGenerator.getSeed());
+        this(Utils.getSeed());
     }
 
     /** Constructs a random number generator with the specified seed. */
@@ -83,6 +83,9 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
      * @throws NullPointerException if seed is null 
      */
     public void setSeed(int[] seed) {
+        if (seed == null) {
+            throw new NullPointerException();
+        }
         clearGaussian();
         mt[0] = 19650218;
         for (mti = 1; mti < N; ++mti) {

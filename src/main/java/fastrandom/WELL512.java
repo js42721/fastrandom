@@ -16,7 +16,7 @@ public class WELL512 extends AbstractFastRandom implements FastRandom, Serializa
 
     /** Constructs a random number generator. */
     public WELL512() {
-        this(SeedGenerator.getSeed());
+        this(Utils.getSeed());
     }
 
     /** Constructs a random number generator with the specified seed. */
@@ -34,7 +34,7 @@ public class WELL512 extends AbstractFastRandom implements FastRandom, Serializa
         state[1] = (int) seed;
         long next = seed;
         for (int i = 2; i < state.length; ++i) {
-            next = SeedGenerator.LCG(next);
+            next = Utils.LCG(next);
             state[i] = (int) (next >> 32);
         }
     }
