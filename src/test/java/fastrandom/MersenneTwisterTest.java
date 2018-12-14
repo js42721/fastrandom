@@ -49,21 +49,14 @@ public class MersenneTwisterTest {
         assertEquals(r1, r2, 0.0);
     }
 
-    @Test
-    public void testSeedByArrayEmpty() {
-        int[] seed = {};
-
-        MersenneTwister mt = new MersenneTwister(seed);
-        double r1 = mt.nextGaussian();
-
-        mt.setSeed(seed);
-        double r2 = mt.nextGaussian();
-
-        assertEquals(r1, r2, 0.0);
-    }
-
     @Rule
     public ExpectedException thrown = ExpectedException.none();
+
+    @Test
+    public void testSeedByArrayEmpty() {
+        thrown.expect(IllegalArgumentException.class);
+        new MersenneTwister(new int[] {});
+    }
 
     @Test
     public void testSeedByArrayNull() {
