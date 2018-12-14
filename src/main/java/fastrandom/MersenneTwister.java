@@ -71,7 +71,8 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
     /**
      * Constructs a random number generator seeded by an {@code int} array.
      *
-     * @throws NullPointerException if seed is null
+     * @throws NullPointerException     if seed is null
+     * @throws IllegalArgumentException if seed is empty
      */
     public MersenneTwister(int[] seed) {
         mt = new int[N];
@@ -95,16 +96,14 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
     /**
      * Seeds this generator with an {@code int} array.
      *
-     * @throws NullPointerException if seed is null 
+     * @throws NullPointerException     if seed is null
+     * @throws IllegalArgumentException if seed is empty
      */
     public void setSeed(int[] seed) {
-        if (seed == null) {
-            throw new NullPointerException();
+        if (seed.length == 0) {
+            throw new IllegalArgumentException("Empty seed array");
         }
         setSeed(19650218);
-        if (seed.length == 0) {
-            return;
-        }
         int i = 1, j = 0;
         for (int k = Math.max(seed.length, N); k > 0; --k) {
             mt[i] = (mt[i] ^ (mt[i - 1] ^ (mt[i - 1] >>> 30)) * 1664525) + seed[j] + j;
