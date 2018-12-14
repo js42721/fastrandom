@@ -44,9 +44,9 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
 
     private static final int N          = 624;
     private static final int M          = 397;
+    private static final int MATRIX_A   = 0x9908b0df;
     private static final int UPPER_MASK = 0x80000000;
     private static final int LOWER_MASK = 0x7fffffff;
-    private static final int[] MAG01    = { 0, 0x9908b0df };
 
     private final int[] mt;
     private int mti;
@@ -132,16 +132,17 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
     protected int next(int bits) {
         int y;
         if (mti >= N) {
+            int[] mag01 = { 0, MATRIX_A };
             for (int i = 0; i < N - M; ++i) {
                 y = (mt[i] & UPPER_MASK) | (mt[i + 1] & LOWER_MASK);
-                mt[i] = mt[i + M] ^ (y >>> 1) ^ MAG01[y & 1];
+                mt[i] = mt[i + M] ^ (y >>> 1) ^ mag01[y & 1];
             }
             for (int i = N - M; i < N - 1; ++i) {
                 y = (mt[i] & UPPER_MASK) | (mt[i + 1] & LOWER_MASK);
-                mt[i] = mt[i + (M - N)] ^ (y >>> 1) ^ MAG01[y & 1];
+                mt[i] = mt[i + (M - N)] ^ (y >>> 1) ^ mag01[y & 1];
             }
             y = (mt[N - 1] & UPPER_MASK) | (mt[0] & LOWER_MASK);
-            mt[N - 1] = mt[M - 1] ^ (y >>> 1) ^ MAG01[y & 1];
+            mt[N - 1] = mt[M - 1] ^ (y >>> 1) ^ mag01[y & 1];
             mti = 0;
         }
         y = mt[mti++];
