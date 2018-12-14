@@ -25,6 +25,13 @@ public class MersenneTwisterTest {
             long actual = mt.nextInt() & 0xffffffffL;
             assertEquals(expected, actual);
         }
+        
+        while (scan.hasNext()) {
+            String expected = scan.next();
+            double d = (mt.nextInt() & 0xffffffffL) / 4294967296.0;
+            String actual = String.format("%.8f", d);
+            assertEquals(expected, actual);
+        }
 
         scan.close();
     }
