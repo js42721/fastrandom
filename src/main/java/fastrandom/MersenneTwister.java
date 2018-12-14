@@ -71,7 +71,7 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
     /**
      * Constructs a random number generator seeded by an {@code int} array.
      *
-     * @throws NullPointerException     if seed is null
+     * @throws NullPointerException     if seed is {@code null}
      * @throws IllegalArgumentException if seed is empty
      */
     public MersenneTwister(int[] seed) {
@@ -96,7 +96,7 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
     /**
      * Seeds this generator with an {@code int} array.
      *
-     * @throws NullPointerException     if seed is null
+     * @throws NullPointerException     if seed is {@code null}
      * @throws IllegalArgumentException if seed is empty
      */
     public void setSeed(int[] seed) {
