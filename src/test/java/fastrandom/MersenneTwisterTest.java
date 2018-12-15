@@ -46,7 +46,7 @@ public class MersenneTwisterTest {
         mt.setSeed(seed);
         double r2 = mt.nextGaussian();
 
-        assertEquals(r1, r2, 0.0);
+        assertEquals(r1, r2, 0);
     }
 
     @Rule

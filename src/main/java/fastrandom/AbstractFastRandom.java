@@ -98,7 +98,10 @@ public abstract class AbstractFastRandom implements FastRandom {
         return r * x;
     }
 
-    /** Call this in {@code setSeed} if {@code nextGaussian} is not overridden. */
+    /**
+     * Call this in {@link #setSeed(long) setSeed} if {@link #nextGaussian()
+     * nextGaussian} is not overridden.
+     */
     protected void clearGaussian() {
         hasNextGaussian = false;
     }

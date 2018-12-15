@@ -36,6 +36,6 @@ public class SetSeedTest {
         rnd.setSeed(seed);
         double r2 = rnd.nextGaussian();
 
-        assertEquals(r1, r2, 0.0);
+        assertEquals(r1, r2, 0);
     }
 }
