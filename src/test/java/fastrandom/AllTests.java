@@ -5,7 +5,9 @@ import org.junit.runners.Suite;
 import org.junit.runners.Suite.SuiteClasses;
 
 @RunWith(Suite.class)
-@SuiteClasses({ KISSTest.class, MersenneTwisterTest.class, Taus88Test.class,
-    WELL512Test.class, SetSeedTest.class })
+@SuiteClasses({ MersenneTwisterTest.class,
+                Taus88Test.class,
+                WELL512Test.class,
+                SetSeedTest.class })
 public class AllTests {
 }

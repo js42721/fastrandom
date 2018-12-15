@@ -14,7 +14,6 @@ public class SetSeedTest {
     @Parameters
     public static Iterable<Object[]> getAll() {
         return Arrays.asList(new Object[][] {
-                { KISS.class },
                 { MersenneTwister.class },
                 { Taus88.class },
                 { WELL512.class }
