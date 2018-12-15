@@ -21,7 +21,7 @@ time column shows the time required to generate 10<sup>9</sup> numbers on a
 | Name             | Period                | State size (words) | Time (s) | 
 | :--------------- | :-------------------- | :----------------- | :------- |
 | Mersenne Twister | 2<sup>19937</sup> - 1 | 624                | 3.7      |
-| taus88           | ~2<sup>88</sup>       | 3                  | 4.8      |
+| taus88           | 2<sup>88</sup>        | 3                  | 4.8      |
 | WELL512          | 2<sup>512</sup> - 1   | 16                 | 10.7     |
 
 <br>
