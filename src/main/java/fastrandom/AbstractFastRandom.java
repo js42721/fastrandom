@@ -88,11 +88,11 @@ public abstract class AbstractFastRandom implements FastRandom {
         /* Marsaglia's polar method. */
         double x, y, s;
         do {
-            x = 2.0 * nextDouble() - 1.0;
-            y = 2.0 * nextDouble() - 1.0;
+            x = 2 * nextDouble() - 1;
+            y = 2 * nextDouble() - 1;
             s = x * x + y * y;
-        } while (s >= 1.0 || s == 0.0);
-        double r = Math.sqrt(-2.0 * Math.log(s) / s);
+        } while (s >= 1 || s == 0);
+        double r = StrictMath.sqrt(-2 * StrictMath.log(s) / s);
         nextGaussian = r * y;
         hasNextGaussian = true;
         return r * x;
