@@ -6,7 +6,7 @@ non-cryptographic pseudorandom number generators:
 
 * <b>Mersenne Twister</b> - a 623-dimensionally equidistributed generator with a 
 ginormous period of 2<sup>19937</sup> - 1 by Matsumoto and Nishimura.
-* <b>taus88</b> - a maximally equidistributed linear feedback shift register by
+* <b>Taus88</b> - a maximally equidistributed linear feedback shift register by
 L'Ecuyer.
 * <b>WELL512a</b> - part of the WELL (Well Equidistributed Long-period Linear)
 series by L'Ecuyer, Matsumoto, and Panneton.
@@ -21,7 +21,7 @@ time column shows the time required to generate 10<sup>9</sup> numbers on a
 | Name             | Period                | State size (words) | Time (s) | 
 | :--------------- | :-------------------- | :----------------- | :------- |
 | Mersenne Twister | 2<sup>19937</sup> - 1 | 624                | 6.4      |
-| taus88           | ~2<sup>88</sup>       | 3                  | 4.8      |
+| Taus88           | ~2<sup>88</sup>       | 3                  | 4.8      |
 | WELL512a         | 2<sup>512</sup> - 1   | 16                 | 10.7     |
 
 <br>
