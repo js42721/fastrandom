@@ -1,7 +1,11 @@
 package fastrandom;
 
+import java.io.Serializable;
+
 /** Partial implementation of {@link FastRandom}. */
-public abstract class AbstractFastRandom implements FastRandom {
+public abstract class AbstractFastRandom implements FastRandom, Serializable {
+    private static final long serialVersionUID = -8036711636248608047L;
+    
     private boolean hasNextGaussian;
     private double nextGaussian;
 
