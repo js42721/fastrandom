@@ -78,7 +78,7 @@ public class MersenneTwister extends AbstractFastRandom implements FastRandom, S
         mt = new int[N];
         setSeed(seed);
     }
-    
+
     /** Seeds this generator with an {@code int}. */
     public void setSeed(int seed) {
         clearGaussian();
