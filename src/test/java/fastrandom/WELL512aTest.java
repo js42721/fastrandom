@@ -9,10 +9,29 @@ import org.junit.Test;
 public class WELL512aTest {
     @Test
     public void testOutput() throws Exception {
-        int[] testState = { 123456789, -59172568, -423908753, -928090592,
-                68836822, 1269219612, -77824293, 1060662926, -480941754,
-                -1907295641, -1075035823, 292129001, -146556871, 1240875097,
-                -120842159, 551407414 };
+        int[] testState = { 
+                0x075bcd15, 0xfc791928, 0xe6bbaa6f, 0xc8ae7620, 0x041a5dd6, 0x4ba6c11c, 0xfb5c7edb, 0x3f386e8e,
+                0xe3556946, 0x8e50fa67, 0xbfec4151, 0x116988e9, 0xf743b839, 0x49f64059, 0xf8cc1851, 0x20ddcf36
+        };
+
+        int[] expected = {
+                0x02dfe796, 0xbc4972fe, 0x1b48e8be, 0xecb648a9, 0x0e183f89, 0x857b9288, 0xadfc5d15, 0xeddfb944,
+                0x34db4a9d, 0x5e910b24, 0x0677b7f3, 0x34964fa4, 0x65c46c3c, 0x4ce512a9, 0xac589b6b, 0xd65cbd7f,
+                0xa515315b, 0x1647ac0a, 0x0a3d7e7d, 0x1ac9da98, 0x9432aeb3, 0x7e3adfca, 0x61bb043f, 0x23899730,
+                0x6dab627e, 0x5d5585ce, 0x62ce3355, 0xb0dff311, 0xadbd2445, 0xdb3e76d6, 0x0bd5e0ec, 0xbfe2ccd7,
+                0x3a085825, 0xce1c2cc0, 0x6f2df44b, 0x1be65d68, 0x7fad7fd1, 0x5b8f4f74, 0x4fa6eb65, 0x0e981b58,
+                0x46956b69, 0xd96a3482, 0x6db39248, 0x32a173ac, 0x34dad904, 0xf2f65b66, 0x07aee5fd, 0x707421b7,
+                0x529755ca, 0xa6d5d68f, 0x32398a16, 0xa060cd70, 0xac904540, 0xc1531456, 0x2fc0ea46, 0xf499f31b,
+                0x6f9c7ed6, 0xfc960e6f, 0xaebbfe78, 0x0fb5e2b3, 0x32c33c98, 0xb76e0790, 0x1293bb58, 0xe1397076,
+                0x1715aece, 0x5be46e39, 0xf46ec70e, 0x8227922d, 0x3ea41283, 0x80fbf22f, 0x84ecbb5d, 0x8e54f6a5,
+                0x7fd4862c, 0xf3b6a5fc, 0xe4eb10a1, 0xbce81477, 0xacd2cee2, 0x73ffc751, 0x82607212, 0x6f129fae,
+                0x6e83e57f, 0xa6f4ec9b, 0x600e522c, 0x95e6ce5c, 0xce59c408, 0x12ef2254, 0xc15e56c1, 0xa282f314,
+                0xa9862d3c, 0xf9ca1941, 0xa5330e94, 0xab91b45d, 0x7359c922, 0x87e695a8, 0x41533fa3, 0xa6baeab4,
+                0xe9bffff9, 0xb64a0d1a, 0xa94fff17, 0x6927f51e, 0x8d2f9e44, 0xf3358a1b, 0x57d3c970, 0x3002bf9e,
+                0xfbec089e, 0xef30f98c, 0x29662ac1, 0x527bb1fc, 0x20edd3a2, 0x7393b7b4, 0x45d17b8e, 0x28e12d02,
+                0xd8681500, 0x552c8a57, 0x2b61081f, 0x4bb0cd91, 0x9c3ea031, 0xa5e90059, 0x2a7525e6, 0xef36aae7,
+                0x848c2f0c, 0xa6764109, 0x8d0d0761, 0xfba5a6d9, 0x35db236f, 0x7822d78a, 0xc6859d7a, 0xddf9cf4a
+        };
 
         WELL512a w = new WELL512a();
 
@@ -21,10 +40,8 @@ public class WELL512aTest {
         int[] s = (int[]) field.get(w);
         System.arraycopy(testState, 0, s, 0, testState.length);
 
-        for (int i = 0; i < 10; ++i) {
-            w.nextInt();
+        for (int n : expected) {
+            assertEquals(n, w.nextInt());
         }
-
-        assertEquals(108509171, w.nextInt());
     }
 }
