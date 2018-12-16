@@ -3,8 +3,8 @@ package fastrandom;
 import java.io.Serializable;
 
 /**
- * Well Equidistributed Long-period Linear generator with a state size of 512
- * bits and a period of 2<sup>512</sup> - 1. See "Improved Long-Period
+ * Well Equidistributed Long-period Linear (WELL) generator with a state size of
+ * 512 bits and a period of 2<sup>512</sup> - 1. See "Improved Long-Period
  * Generators Based on Linear Recurrences Modulo 2" by L'Ecuyer, Matsumoto, and
  * Panneton.
  */
