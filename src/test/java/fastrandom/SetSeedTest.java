@@ -16,7 +16,7 @@ public class SetSeedTest {
         return Arrays.asList(new Object[][] {
                 { MersenneTwister.class },
                 { Taus88.class },
-                { WELL512a.class }
+                { Well512a.class }
         });
     }
 

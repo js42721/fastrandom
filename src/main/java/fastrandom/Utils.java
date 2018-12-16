@@ -9,7 +9,7 @@ public final class Utils {
     }
 
     /** Returns (ax + b) mod p. */
-    public static long LCG(long x) {
+    public static long lcg(long x) {
         return x * 6364136223846793005L + 1442695040888963407L;
     }
 
@@ -18,7 +18,7 @@ public final class Utils {
         long seed, nextSeed;
         do {
             seed = SEED.get();
-            nextSeed = LCG(seed);
+            nextSeed = lcg(seed);
         } while (!SEED.compareAndSet(seed, nextSeed));
         return nextSeed ^ System.nanoTime();
     }

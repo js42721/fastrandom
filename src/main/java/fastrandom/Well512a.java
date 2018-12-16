@@ -8,7 +8,7 @@ import java.io.Serializable;
  * Generators Based on Linear Recurrences Modulo 2" by L'Ecuyer, Matsumoto, and
  * Panneton.
  */
-public class WELL512a extends AbstractFastRandom implements FastRandom, Serializable {
+public class Well512a extends AbstractFastRandom implements FastRandom, Serializable {
     private static final long serialVersionUID = -178962713019714243L;
 
     private static final int R    = 16;
@@ -20,12 +20,12 @@ public class WELL512a extends AbstractFastRandom implements FastRandom, Serializ
     private int si;
 
     /** Constructs a random number generator. */
-    public WELL512a() {
+    public Well512a() {
         this(Utils.getSeed());
     }
 
     /** Constructs a random number generator with the specified seed. */
-    public WELL512a(long seed) {
+    public Well512a(long seed) {
         s = new int[R];
         setSeed(seed);
     }
@@ -39,7 +39,7 @@ public class WELL512a extends AbstractFastRandom implements FastRandom, Serializ
         s[1] = (int) seed;
         long next = seed;
         for (int i = 2; i < R; ++i) {
-            next = Utils.LCG(next);
+            next = Utils.lcg(next);
             s[i] = (int) (next >> 32);
         }
     }
@@ -50,29 +50,29 @@ public class WELL512a extends AbstractFastRandom implements FastRandom, Serializ
         int vm1 = s[(si + M1) & MASK];
         int vm2 = s[(si + M2) & MASK];
         int z0  = s[(si + 15) & MASK];
-        int z1  = mat0neg(-16, v0) ^ mat0neg(-15, vm1);
-        int z2  = mat0pos(11, vm2);
+        int z1  = mat0Neg(-16, v0) ^ mat0Neg(-15, vm1);
+        int z2  = mat0Pos(11, vm2);
         int nv1 = z1 ^ z2;
         s[si]   = nv1;
-        int res = mat0neg(-2, z0) ^ mat0neg(-18, z1) ^ mat3neg(-28, z2) ^ mat4neg(-5, 0xda442d24, nv1);
+        int res = mat0Neg(-2, z0) ^ mat0Neg(-18, z1) ^ mat3Neg(-28, z2) ^ mat4Neg(-5, 0xda442d24, nv1);
         si      = (si + 15) & MASK;
         s[si]   = res;
         return res >>> (32 - bits);
     }
 
-    private static int mat0pos(int t, int v) {
+    private static int mat0Pos(int t, int v) {
         return v ^ (v >>> t);
     }
 
-    private static int mat0neg(int t, int v) {
+    private static int mat0Neg(int t, int v) {
         return v ^ (v << -t);
     }
 
-    private static int mat3neg(int t, int v) {
+    private static int mat3Neg(int t, int v) {
         return v << -t;
     }
 
-    private static int mat4neg(int t, int b, int v) {
+    private static int mat4Neg(int t, int b, int v) {
         return v ^ ((v << -t) & b);
     }
 }

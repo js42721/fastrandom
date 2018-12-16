@@ -6,7 +6,7 @@ import java.lang.reflect.Field;
 
 import org.junit.Test;
 
-public class WELL512aTest {
+public class Well512aTest {
     @Test
     public void testOutput() throws Exception {
         int[] testState = { 
@@ -33,9 +33,9 @@ public class WELL512aTest {
                 0x848c2f0c, 0xa6764109, 0x8d0d0761, 0xfba5a6d9, 0x35db236f, 0x7822d78a, 0xc6859d7a, 0xddf9cf4a
         };
 
-        WELL512a w = new WELL512a();
+        Well512a w = new Well512a();
 
-        Field field = WELL512a.class.getDeclaredField("s");
+        Field field = Well512a.class.getDeclaredField("s");
         field.setAccessible(true);
         int[] s = (int[]) field.get(w);
         System.arraycopy(testState, 0, s, 0, testState.length);

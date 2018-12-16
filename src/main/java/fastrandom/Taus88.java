@@ -36,7 +36,7 @@ public class Taus88 extends AbstractFastRandom implements FastRandom, Serializab
             s1 += 8;
         }
         /* Upper 28 bits must not be all zero. */
-        s2 = (int) (Utils.LCG(seed) >> 32);
+        s2 = (int) (Utils.lcg(seed) >> 32);
         if ((s2 & 0xffffffffL) < 16) {
             s2 += 16;
         }
