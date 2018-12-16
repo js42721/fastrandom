@@ -8,7 +8,7 @@ non-cryptographic pseudorandom number generators:
 ginormous period of 2<sup>19937</sup> - 1 by Matsumoto and Nishimura.
 * <b>taus88</b> - a maximally equidistributed linear feedback shift register by
 L'Ecuyer.
-* <b>WELL512</b> - part of the WELL (Well Equidistributed Long-period Linear)
+* <b>WELL512a</b> - part of the WELL (Well Equidistributed Long-period Linear)
 series by L'Ecuyer, Matsumoto, and Panneton.
 
 All of these generators perform well on statistical tests of randomness and
@@ -22,7 +22,7 @@ time column shows the time required to generate 10<sup>9</sup> numbers on a
 | :--------------- | :-------------------- | :----------------- | :------- |
 | Mersenne Twister | 2<sup>19937</sup> - 1 | 624                | 6.4      |
 | taus88           | ~2<sup>88</sup>       | 3                  | 4.8      |
-| WELL512          | 2<sup>512</sup> - 1   | 16                 | 10.7     |
+| WELL512a         | 2<sup>512</sup> - 1   | 16                 | 10.7     |
 
 <br>
 These generators are implemented in a non-thread-safe manner for the sake of

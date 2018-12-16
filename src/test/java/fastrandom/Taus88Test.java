@@ -11,15 +11,15 @@ public class Taus88Test {
     public void testOutput() throws Exception {
         Taus88 t = new Taus88();
 
-        Field f1 = Taus88.class.getDeclaredField("s1");
+        Field f1 = Taus88.class.getDeclaredField("s0");
         f1.setAccessible(true);
         f1.setInt(t, 123456789);
 
-        Field f2 = Taus88.class.getDeclaredField("s2");
+        Field f2 = Taus88.class.getDeclaredField("s1");
         f2.setAccessible(true);
         f2.setInt(t, -59172568);
 
-        Field f3 = Taus88.class.getDeclaredField("s3");
+        Field f3 = Taus88.class.getDeclaredField("s2");
         f3.setAccessible(true);
         f3.setInt(t, -423908753);
 
