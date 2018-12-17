@@ -11,10 +11,9 @@ import java.io.Serializable;
 public class Well512a extends AbstractFastRandom implements FastRandom, Serializable {
     private static final long serialVersionUID = -178962713019714243L;
 
-    private static final int R    = 16;
-    private static final int M1   = 13;
-    private static final int M2   = 9;
-    private static final int MASK = 0xf;
+    private static final int R  = 16;
+    private static final int M1 = 13;
+    private static final int M2 = 9;
 
     private final int[] s;
     private int si;
@@ -47,15 +46,15 @@ public class Well512a extends AbstractFastRandom implements FastRandom, Serializ
     @Override
     protected int next(int bits) {
         int v0  = s[si];
-        int vm1 = s[(si + M1) & MASK];
-        int vm2 = s[(si + M2) & MASK];
-        int z0  = s[(si + 15) & MASK];
+        int vm1 = s[(si + M1) & 0xf];
+        int vm2 = s[(si + M2) & 0xf];
+        int z0  = s[(si + 15) & 0xf];
         int z1  = mat0Neg(-16, v0) ^ mat0Neg(-15, vm1);
         int z2  = mat0Pos(11, vm2);
         int nv1 = z1 ^ z2;
         s[si]   = nv1;
         int res = mat0Neg(-2, z0) ^ mat0Neg(-18, z1) ^ mat3Neg(-28, z2) ^ mat4Neg(-5, 0xda442d24, nv1);
-        si      = (si + 15) & MASK;
+        si      = (si + 15) & 0xf;
         s[si]   = res;
         return res >>> (32 - bits);
     }
