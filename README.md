@@ -4,7 +4,7 @@ FastRandom
 A fast, high-quality alternative to java.util.Random. It includes the following
 non-cryptographic pseudorandom number generators:
 
-* <b>Mersenne Twister</b> - a 623-dimensionally equidistributed generator with a 
+* <b>Mersenne Twister</b> - a 623-dimensionally equidistributed generator with a
 ginormous period of 2<sup>19937</sup> - 1 by Matsumoto and Nishimura.
 * <b>Taus88</b> - a maximally equidistributed linear feedback shift register by
 L'Ecuyer.
