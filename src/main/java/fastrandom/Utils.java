@@ -5,8 +5,7 @@ import java.util.concurrent.atomic.AtomicLong;
 public final class Utils {
     private static final AtomicLong SEED = new AtomicLong();
 
-    private Utils() {
-    }
+    private Utils() {}
 
     /** Returns (ax + b) mod p. */
     public static long lcg(long x) {
