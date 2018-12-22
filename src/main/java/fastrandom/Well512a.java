@@ -45,33 +45,14 @@ public class Well512a extends AbstractFastRandom implements FastRandom, Serializ
 
     @Override
     protected int next(int bits) {
-        int v0  = s[si];
-        int vm1 = s[(si + M1) & 0xf];
-        int vm2 = s[(si + M2) & 0xf];
-        int z0  = s[(si + 15) & 0xf];
-        int z1  = mat0Neg(-16, v0) ^ mat0Neg(-15, vm1);
-        int z2  = mat0Pos(11, vm2);
-        int nv1 = z1 ^ z2;
-        s[si]   = nv1;
-        int res = mat0Neg(-2, z0) ^ mat0Neg(-18, z1) ^ mat3Neg(-28, z2) ^ mat4Neg(-5, 0xda442d24, nv1);
-        si      = (si + 15) & 0xf;
-        s[si]   = res;
-        return res >>> (32 - bits);
-    }
-
-    private static int mat0Pos(int t, int v) {
-        return v ^ (v >>> t);
-    }
-
-    private static int mat0Neg(int t, int v) {
-        return v ^ (v << -t);
-    }
-
-    private static int mat3Neg(int t, int v) {
-        return v << -t;
-    }
-
-    private static int mat4Neg(int t, int b, int v) {
-        return v ^ ((v << -t) & b);
+        int z1 = s[si];
+        int z2 = s[(si + M1) & 0xf];
+        z1 = (z1 ^ (z1 << 16)) ^ (z2 ^ (z2 << 15));
+        z2 = s[(si + M2) & 0xf];
+        z2 ^= z2 >>> 11;
+        int v = s[si] = z1 ^ z2;
+        int z0 = s[si = (si + 15) & 0xf];
+        v = s[si] = (z0 ^ (z0 << 2)) ^ (z1 ^ (z1 << 18)) ^ (z2 << 28) ^ (v ^ ((v << 5) & 0xda442d24));
+        return v >>> (32 - bits);
     }
 }
