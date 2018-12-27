@@ -9,38 +9,25 @@ import org.junit.Test;
 public class Taus88Test {
     @Test
     public void testOutput() throws Exception {
-        int[] expected = {
-                0x2f9ab186, 0xb45a9be8, 0xccfa5a12, 0xaf6f3483, 0xd21cbf15, 0x78e5ea10, 0x6818153a, 0xc5c513ee,
-                0x01df2067, 0x33c04f7b, 0x6fe257cd, 0xd7fb1b12, 0xa80691dd, 0xb731bcfa, 0x1ca49c1e, 0xc56b1919,
-                0x4bbb4896, 0xa25233bb, 0x656c09a8, 0x556f7bdb, 0x95ac52e6, 0xdaaaf16e, 0x99c6d710, 0x93053aaf,
-                0x202829c0, 0x89f74676, 0x70a608b9, 0x71b9cd37, 0xf8e08c4f, 0x4a82e20c, 0xe2e0be8a, 0x6a7a9f97,
-                0xda22e8ad, 0x5d340ad2, 0x3507f9ce, 0xab965c9c, 0x3b1d5f54, 0xde41945f, 0xc3324244, 0xc7520300,
-                0x2d984d8b, 0x47211607, 0x04c06d82, 0xf8960e33, 0x7e31fa79, 0x7faec172, 0x013e7526, 0x3677fee8,
-                0x7b9426a8, 0x89d49f97, 0x3d654e85, 0x31dd7ab4, 0xa0b0516a, 0xa42754df, 0xe6d850d5, 0x9de73b96,
-                0xca9a3091, 0x3c2d8627, 0xc047710a, 0x93f7cd1b, 0x70edd96b, 0xddda205d, 0xa0974d3f, 0xab7c3300,
-                0x18c4286b, 0x514150eb, 0x7bc9ab7f, 0x5ddecab2, 0x46566ab5, 0x3e9834c6, 0xc713db3d, 0x4e77dda6,
-                0x49eabddc, 0x18396507, 0x55d4a8ec, 0x9a61c572, 0xfcf22f7e, 0x44d40d0c, 0x1cefe6aa, 0xc6416819,
-                0x17b99062, 0xcf750f0f, 0xdfafcb42, 0x92528274, 0x0785697b, 0x432c8b2d, 0x71f305f1, 0x71dca49b,
-                0x8a3d690b, 0x8b2e0673, 0xb61d1ee6, 0xec1075f7, 0x9f8f500d, 0x574dc3fa, 0x5684eef2, 0xa900adaa,
-                0x3bc7595d, 0xc5eca2dd, 0xff6fb00d, 0x8a92d223, 0x2a4351bb, 0x473016d2, 0x3193ab97, 0x41212377,
-                0xb3e831bc, 0x62f41845, 0xfc3aa49c, 0x41d12b6b, 0xfcee12d4, 0xf73a70dd, 0x9f132aba, 0x6e562f26,
-                0x2d8c7965, 0x50670646, 0x6bbdd16c, 0x45c5d000, 0x7b10d11a, 0xaea23485, 0x93cbf888, 0x64a8578f,
-                0xac1cc02c, 0xa969a0ee, 0xc4159506, 0x22ee1971, 0x2bb9fcb2, 0xac3ab9c8, 0x7446a00c, 0xefbe30e0
-        };
+        int[] expected = { 0x78b3e036, 0x2c777c2e, 0x99dc791c, 0x24a8efe0 };
 
         Taus88 t = new Taus88();
 
-        Field f1 = Taus88.class.getDeclaredField("s0");
+        Field f0 = Taus88.class.getDeclaredField("s0");
+        f0.setAccessible(true);
+        f0.setInt(t, -1);
+
+        Field f1 = Taus88.class.getDeclaredField("s1");
         f1.setAccessible(true);
-        f1.setInt(t, 123456789);
+        f1.setInt(t, -1);
 
-        Field f2 = Taus88.class.getDeclaredField("s1");
+        Field f2 = Taus88.class.getDeclaredField("s2");
         f2.setAccessible(true);
-        f2.setInt(t, -59172568);
+        f2.setInt(t, -1);
 
-        Field f3 = Taus88.class.getDeclaredField("s2");
-        f3.setAccessible(true);
-        f3.setInt(t, -423908753);
+        for (int i = 0; i < 1000000; ++i) {
+            t.nextInt();
+        }
 
         for (int n : expected) {
             assertEquals(n, t.nextInt());
