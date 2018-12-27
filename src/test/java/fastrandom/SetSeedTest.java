@@ -28,7 +28,7 @@ public class SetSeedTest {
 
     @Test
     public void testSetSeed() throws Exception {
-        long seed = 9876543210L;
+        long seed = -1L;
 
         FastRandom rnd = c.getConstructor(Long.TYPE).newInstance(seed);
         double r1 = rnd.nextGaussian();
