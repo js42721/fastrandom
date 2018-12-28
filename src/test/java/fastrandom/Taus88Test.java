@@ -15,15 +15,15 @@ public class Taus88Test {
 
         Field f0 = Taus88.class.getDeclaredField("s0");
         f0.setAccessible(true);
-        f0.setInt(t, -1);
+        f0.setInt(t, 0xffffffff);
 
         Field f1 = Taus88.class.getDeclaredField("s1");
         f1.setAccessible(true);
-        f1.setInt(t, -1);
+        f1.setInt(t, 0xffffffff);
 
         Field f2 = Taus88.class.getDeclaredField("s2");
         f2.setAccessible(true);
-        f2.setInt(t, -1);
+        f2.setInt(t, 0xffffffff);
 
         for (int i = 0; i < 1000000; ++i) {
             t.nextInt();

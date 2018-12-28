@@ -17,7 +17,7 @@ public class Well512aTest {
         Field field = Well512a.class.getDeclaredField("s");
         field.setAccessible(true);
         int[] s = (int[]) field.get(w);
-        Arrays.fill(s, -1);
+        Arrays.fill(s, 0xffffffff);
 
         for (int i = 0; i < 1000000; ++i) {
             w.nextInt();
