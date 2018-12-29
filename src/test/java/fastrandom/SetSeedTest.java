@@ -28,14 +28,28 @@ public class SetSeedTest {
 
     @Test
     public void testSetSeed() throws Exception {
-        long seed = Utils.getSeed();
+        int n = 1000000;
+        double[] expected = new double[5];
 
+        long seed = Utils.getSeed();
         FastRandom rnd = c.getConstructor(Long.TYPE).newInstance(seed);
-        double r1 = rnd.nextGaussian();
+        
+        for (int i = 0; i < n; ++i) {
+            rnd.nextInt();
+        }
+
+        for (int i = 0; i < expected.length; ++i) {
+            expected[i] = rnd.nextGaussian();
+        }
 
         rnd.setSeed(seed);
-        double r2 = rnd.nextGaussian();
 
-        assertEquals(r1, r2, 0);
+        for (int i = 0; i < n; ++i) {
+            rnd.nextInt();
+        }
+
+        for (double e : expected) {
+            assertEquals(e, rnd.nextGaussian(), 0);
+        }
     }
 }

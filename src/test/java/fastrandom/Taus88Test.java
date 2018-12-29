@@ -29,8 +29,8 @@ public class Taus88Test {
             t.nextInt();
         }
 
-        for (int n : expected) {
-            assertEquals(n, t.nextInt());
+        for (int e : expected) {
+            assertEquals(e, t.nextInt());
         }
     }
 }

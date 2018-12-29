@@ -23,8 +23,8 @@ public class Well512aTest {
             w.nextInt();
         }
 
-        for (int n : expected) {
-            assertEquals(n, w.nextInt());
+        for (int e : expected) {
+            assertEquals(e, w.nextInt());
         }
     }
 }
