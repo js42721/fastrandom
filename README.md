@@ -12,7 +12,7 @@ L'Ecuyer.
 series by L'Ecuyer, Matsumoto, and Panneton.
 
 All of these generators perform favorably on statistical tests of randomness and
-are well suited for simulations and most other non-cryptographic uses.
+are suitable for simulations and most other non-cryptographic uses.
 
 Use the information in the table below to determine which generator is most
 appropriate for your use case. The time column shows the time required to
