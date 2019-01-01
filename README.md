@@ -1,22 +1,22 @@
 FastRandom
 ==========
 
-A fast, high-quality alternative to java.util.Random. It includes the following
-non-cryptographic pseudorandom number generators:
+A faster, more "random" alternative to java.util.Random. It includes the
+following non-cryptographic pseudorandom number generators:
 
 * <b>Mersenne Twister</b> - a 623-dimensionally equidistributed generator with a
-ginormous period of 2<sup>19937</sup> - 1 by Matsumoto and Nishimura.
+period of 2<sup>19937</sup> - 1 by Matsumoto and Nishimura.
 * <b>Taus88</b> - a maximally equidistributed linear feedback shift register by
 L'Ecuyer.
 * <b>WELL512a</b> - part of the WELL (Well Equidistributed Long-period Linear)
 series by L'Ecuyer, Matsumoto, and Panneton.
 
-All of these generators perform well on statistical tests of randomness and
-should work well for simulations and most other non-cryptographic uses.
+All of these generators perform favorably on statistical tests of randomness and
+are well suited for simulations and most other non-cryptographic uses.
 
-The table below provides some basic information about the generators. The
-time column shows the time required to generate 10<sup>9</sup> numbers on a
-2 GHz Intel Core 2 Duo.
+Use the information in the table below to determine which generator is most
+appropriate for your use case. The time column shows the time required to
+produce 10<sup>9</sup> numbers on a 2 GHz Intel Core 2 Duo.
 
 | Name             | Period                | State size (words) | Time (s) | 
 | :--------------- | :-------------------- | :----------------- | :------- |
@@ -25,8 +25,7 @@ time column shows the time required to generate 10<sup>9</sup> numbers on a
 | WELL512a         | 2<sup>512</sup> - 1   | 16                 | 7.3      |
 
 <br>
-These generators are implemented in a non-thread-safe manner for the sake of
-performance. The recommended way to use them in a multithreaded application is
-to have each thread access its own isolated generator instance, thereby avoiding
-the need for synchronization or atomic updates.
-
+Be aware that these generators are implemented in a non-thread-safe manner for
+the sake of performance. In a multithreaded application, the recommended course
+of action is to have each thread access its own isolated generator instance,
+thereby avoiding the need for synchronization or atomic updates.
