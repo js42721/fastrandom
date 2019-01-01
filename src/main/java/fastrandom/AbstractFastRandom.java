@@ -43,18 +43,9 @@ public abstract class AbstractFastRandom implements FastRandom, Serializable {
         if (n <= 0) {
             throw new IllegalArgumentException("n must be positive");
         }
-        if ((n & (n - 1)) == 0) { // n is a power of 2 for n > 0.
-            /*
-             * Returns the high bits rather than the low bits. This is helpful
-             * for generators whose output exhibits less entropy in the lower
-             * bits.
-             */
+        if ((n & (n - 1)) == 0) {
             return (int) ((n * (long) next(31)) >> 31);
         }
-        /*
-         * Performs rejection sampling to achieve a uniform distribution if n
-         * does not divide the range of nonnegative int values.
-         */
         int rnd, res;
         do {
             rnd = next(31);
@@ -89,7 +80,6 @@ public abstract class AbstractFastRandom implements FastRandom, Serializable {
             hasNextGaussian = false;
             return nextGaussian;
         }
-        /* Marsaglia's polar method. */
         double x, y, s;
         do {
             x = 2 * nextDouble() - 1;
