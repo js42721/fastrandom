@@ -24,8 +24,3 @@ produce 10<sup>9</sup> numbers on a 2 GHz Intel Core 2 Duo.
 | Taus88           | ~2<sup>88</sup>       | 3                  | 5.3      |
 | WELL512a         | 2<sup>512</sup> - 1   | 16                 | 7.3      |
 
-<br>
-Be aware that these generators are implemented in a non-thread-safe manner for
-the sake of performance. In a multithreaded application, the recommended course
-of action is to have each thread access its own isolated generator instance,
-thereby avoiding the need for synchronization or atomic updates.
