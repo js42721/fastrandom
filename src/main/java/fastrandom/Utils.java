@@ -3,7 +3,7 @@ package fastrandom;
 import java.util.concurrent.atomic.AtomicLong;
 
 public final class Utils {
-    private static final AtomicLong SEED = new AtomicLong();
+    private static final AtomicLong seed = new AtomicLong();
 
     private Utils() {
     }
@@ -15,11 +15,11 @@ public final class Utils {
 
     /** Returns a pseudorandomly generated seed. */
     public static long getSeed() {
-        long seed, nextSeed;
+        long current, next;
         do {
-            seed = SEED.get();
-            nextSeed = lcg(seed);
-        } while (!SEED.compareAndSet(seed, nextSeed));
-        return nextSeed ^ System.nanoTime();
+            current = seed.get();
+            next = lcg(current);
+        } while (!seed.compareAndSet(current, next));
+        return next ^ System.nanoTime();
     }
 }
