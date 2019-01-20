@@ -51,7 +51,8 @@ public class Well512a extends AbstractFastRandom implements FastRandom, Serializ
         z2 = s[(si + M2) & 0xf];
         z2 ^= z2 >>> 11;
         int v = s[si] = z1 ^ z2;
-        int z0 = s[si = (si + 15) & 0xf];
+        si = (si + 15) & 0xf;
+        int z0 = s[si];
         v = s[si] = (z0 ^ (z0 << 2)) ^ (z1 ^ (z1 << 18)) ^ (z2 << 28) ^ (v ^ ((v << 5) & 0xda442d24));
         return v >>> (32 - bits);
     }
